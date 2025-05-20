@@ -1,0 +1,242 @@
+<div class="asset-risk">
+  <section class="section-header">
+    <h2>Lorem Lorem Lorem</h2>
+  </section>
+  
+  <section class="flow-diagram">
+    <div class="flow-container">
+      <!-- First level node -->
+      <div class="flow-node first">
+        <div class="node-icon">
+          <span class="material-icons">message</span>
+        </div>
+        <div class="node-label">{{ flowAssets()[0].name }}</div>
+      </div>
+      
+      <!-- Arrow -->
+      <div class="flow-arrow">
+        <svg width="24" height="24" viewBox="0 0 24 24">
+          <path d="M8 16L16 12L8 8V16Z" fill="#ccc"/>
+        </svg>
+      </div>
+      
+      <!-- Second level node -->
+      <div class="flow-node">
+        <div class="node-icon">
+          <span class="material-icons">dns</span>
+        </div>
+        <div class="node-label">{{ flowAssets()[1].name }}</div>
+      </div>
+      
+      <!-- Arrow -->
+      <div class="flow-arrow">
+        <svg width="24" height="24" viewBox="0 0 24 24">
+          <path d="M8 16L16 12L8 8V16Z" fill="#ccc"/>
+        </svg>
+      </div>
+      
+      <!-- Third level node -->
+      <div class="flow-node">
+        <div class="node-icon">
+          <span class="material-icons">dns</span>
+        </div>
+        <div class="node-label">{{ flowAssets()[2].name }}</div>
+      </div>
+      
+      <!-- Branching -->
+      <div class="flow-branch">
+        <!-- Top branch -->
+        <div class="branch-path top">
+          <div class="flow-node end-node" (click)="openDrawer(flowAssets()[3])">
+            <div class="node-icon">
+              <span class="material-icons">dns</span>
+              @if (flowAssets()[3].riskLevel) {
+                <span class="risk-badge critical">!</span>
+              }
+            </div>
+            <div class="node-details">
+              <div class="node-label">{{ flowAssets()[3].name }}</div>
+              <div class="node-ip">{{ flowAssets()[3].ip }}</div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Bottom branch -->
+        <div class="branch-path bottom">
+          <div class="flow-node end-node" (click)="openDrawer(flowAssets()[4])">
+            <div class="node-icon">
+              <span class="material-icons">dns</span>
+              @if (flowAssets()[4].riskLevel) {
+                <span class="risk-badge critical">!</span>
+              }
+            </div>
+            <div class="node-details">
+              <div class="node-label">{{ flowAssets()[4].name }}</div>
+              <div class="node-ip">{{ flowAssets()[4].ip }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="risk-section">
+    <h2>Lorem Ipsum Dolor Sit</h2>
+    
+    <div class="risk-content">
+      <div class="risk-table">
+        <div class="risk-table-header">
+          <div class="header-cell asset">Asset</div>
+          <div class="header-cell risk">Contextual Risk</div>
+        </div>
+        
+        <div class="risk-table-body">
+          @for (asset of riskAssets(); track $index) {
+            <div class="risk-row" (click)="openDrawer(asset)">
+              <div class="cell asset">
+                <div class="asset-icon">
+                  <span class="material-icons">dns</span>
+                </div>
+                <div class="asset-details">
+                  <div class="asset-name">{{ asset.name }}</div>
+                  <div class="asset-ip">{{ asset.ip }}</div>
+                </div>
+              </div>
+              <div class="cell risk">
+                <div class="risk-badge {{ asset.riskLevel?.toLowerCase() }}">
+                  {{ asset.riskLevel }}
+                </div>
+              </div>
+            </div>
+          }
+        </div>
+        
+        <div class="risk-table-footer">
+          <div class="pagination">
+            <button 
+              class="page-nav" 
+              [disabled]="currentPage() === 1"
+              (click)="prevPage()"
+              aria-label="Previous page"
+            >
+              <span class="material-icons">chevron_left</span>
+            </button>
+            <span class="page-info">Showing {{ currentPage() }}-{{ currentPage() }} of {{ totalPages() }}</span>
+            <button 
+              class="page-nav" 
+              [disabled]="currentPage() === totalPages()"
+              (click)="nextPage()"
+              aria-label="Next page"
+            >
+              <span class="material-icons">chevron_right</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="risk-summary">
+        <h3>Contextual Risk</h3>
+        
+        <div class="donut-chart">
+          <div class="donut-value">{{ totalRiskCount() }}</div>
+          
+          <svg viewBox="0 0 36 36" class="donut">
+            <circle cx="18" cy="18" r="15.91549430918954" fill="transparent" stroke="#f3f3f3" stroke-width="3"></circle>
+            
+            <!-- Add segments based on risk counts -->
+            @if (riskCounts()[0].count > 0) {
+              <circle 
+                cx="18" 
+                cy="18" 
+                r="15.91549430918954" 
+                fill="transparent"
+                [attr.stroke]="riskCounts()[0].color"
+                stroke-width="3"
+                stroke-dasharray="100 0"
+                stroke-dashoffset="25"
+              ></circle>
+            }
+          </svg>
+        </div>
+        
+        <div class="risk-legend">
+          @for (risk of riskCounts(); track $index) {
+            <div class="legend-item">
+              <span class="legend-color" [style.background-color]="risk.color"></span>
+              <span class="legend-count">{{ risk.count }}</span>
+              <span class="legend-label">{{ risk.level }}</span>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="remediation-section">
+    <div class="remediation-groups">
+      @for (group of remediationGroups(); track $index) {
+        <div class="remediation-group">
+          <div class="group-header" [style.color]="group.color">
+            <span class="group-icon" [style.background-color]="group.color">
+              <span class="material-icons">build</span>
+            </span>
+            <span class="group-label">{{ group.label }}</span>
+          </div>
+        </div>
+      }
+    </div>
+  </section>
+  
+  <!-- Vulnerability drawer -->
+  @if (showDrawer()) {
+    <div class="drawer-overlay" (click)="closeDrawer()"></div>
+    <div class="vulnerability-drawer">
+      <div class="drawer-header">
+        <h3>{{ selectedAsset()?.name }}</h3>
+        <button class="close-button" (click)="closeDrawer()" aria-label="Close drawer">
+          <span class="material-icons">close</span>
+        </button>
+      </div>
+      
+      <div class="drawer-content">
+        <div class="asset-details">
+          <div class="detail-item">
+            <span class="detail-label">IP Address:</span>
+            <span class="detail-value">{{ selectedAsset()?.ip }}</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Risk Level:</span>
+            <span class="detail-value">
+              <span class="risk-badge {{ selectedAsset()?.riskLevel?.toLowerCase() }}">
+                {{ selectedAsset()?.riskLevel }}
+              </span>
+            </span>
+          </div>
+        </div>
+        
+        <div class="vulnerability-list">
+          <h4>Vulnerabilities</h4>
+          <div class="vulnerability-item">
+            <div class="vuln-header">
+              <span class="vuln-id">CVE-2023-1234</span>
+              <span class="vuln-severity critical">Critical</span>
+            </div>
+            <div class="vuln-description">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nunc nec ultrices.
+            </div>
+          </div>
+          
+          <div class="vulnerability-item">
+            <div class="vuln-header">
+              <span class="vuln-id">CVE-2023-5678</span>
+              <span class="vuln-severity critical">Critical</span>
+            </div>
+            <div class="vuln-description">
+              Tempus a id adipiscing fames egestas tellus dis pretium tempus.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+</div>

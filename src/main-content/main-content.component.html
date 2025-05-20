@@ -1,0 +1,28 @@
+<div class="main-content">
+  <section class="description-section">
+    <h2>Description</h2>
+    <p>{{ descriptionText }}</p>
+  </section>
+  
+  <section class="extra-section">
+    <h2>Extra</h2>
+    <p>{{ extraText }}</p>
+  </section>
+  
+  <section class="info-section">
+    <div class="info-table">
+      @for (item of infoItems; track $index) {
+        <div class="info-row">
+          <div class="info-label">{{ item.label }}</div>
+          <div class="info-value">
+            @if (item.isCheckmark && item.value === true) {
+              <span class="material-icons check-icon">check_circle</span> Yes
+            } @else {
+              {{ item.value }}
+            }
+          </div>
+        </div>
+      }
+    </div>
+  </section>
+</div>
