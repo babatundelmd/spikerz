@@ -3,26 +3,63 @@
     <h2>Description</h2>
     <p>{{ descriptionText }}</p>
   </section>
-  
+
   <section class="extra-section">
     <h2>Extra</h2>
     <p>{{ extraText }}</p>
   </section>
-  
+
   <section class="info-section">
     <div class="info-table">
       @for (item of infoItems; track $index) {
-        <div class="info-row">
-          <div class="info-label">{{ item.label }}</div>
-          <div class="info-value">
-            @if (item.isCheckmark && item.value === true) {
-              <span class="material-icons check-icon">check_circle</span> Yes
-            } @else {
-              {{ item.value }}
-            }
-          </div>
+      <div class="info-row">
+        <div class="info-label">{{ item.label }}</div>
+        <div class="info-value">
+          @if (item.isCheckmark && item.value === true) {
+          <svg
+            width="15"
+            height="16"
+            viewBox="0 0 15 16"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M12.5 4.25L5.625 11.125L2.5 8"
+              stroke="#08B94E"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          Yes } @else {
+          {{ item.value }}
+          }
         </div>
+      </div>
       }
     </div>
+  </section>
+
+  <section class="container">
+    <app-server-card
+      title="Lorem T"
+      serverName="Server"
+      serverDescription="Lorem Ipsum Dolor Sit Amet Consectetur."
+      expandedContent="Lorem Ipsum Dolor Sit Amet Consectetur. In Laoreet Elementum Luctus Odio. Id Enim Urna."
+    ></app-server-card>
+
+    <app-server-card
+      title="Lorem S"
+      serverName="Server"
+      serverDescription="Lorem Ipsum Dolor Sit Amet Consectetur."
+      expandedContent="Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor."
+    ></app-server-card>
+
+        <app-server-card
+      title="Lorem S"
+      serverName="Server"
+      serverDescription="Nullam Quis Risus Eget Urna Mollis Ornare."
+      expandedContent="Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor."
+    ></app-server-card>
   </section>
 </div>

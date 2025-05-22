@@ -11,6 +11,8 @@
   flex: 1;
   overflow-y: auto;
   background-color: #f9f9f9;
+  width: 100%;
+  padding: 40px;
 
   @media (min-width: 992px) {
     flex-direction: row;

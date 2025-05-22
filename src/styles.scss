@@ -6,24 +6,31 @@
   padding: 0;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   width: 100%;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 14px;
   color: #424242;
   background-color: #f9f9f9;
+  font-family: "DM Sans", sans-serif;
 }
 
 /* Typography */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin: 0;
   line-height: 1.2;
 }
 
 /* Utility classes */
 .material-icons {
-  font-family: 'Material Icons';
+  font-family: "Material Icons";
   font-weight: normal;
   font-style: normal;
   font-size: 24px;
@@ -34,7 +41,7 @@ h1, h2, h3, h4, h5, h6 {
   white-space: nowrap;
   word-wrap: normal;
   direction: ltr;
-  -webkit-font-feature-settings: 'liga';
+  -webkit-font-feature-settings: "liga";
   -webkit-font-smoothing: antialiased;
 }
 
@@ -43,7 +50,7 @@ button {
   border: none;
   background: none;
   font-family: inherit;
-  
+
   &:focus {
     outline: none;
   }
@@ -51,7 +58,7 @@ button {
 
 /* Accessibility */
 :focus-visible {
-  outline: 2px solid #4CAF50;
+  outline: 2px solid #4caf50;
   outline-offset: 2px;
 }
 

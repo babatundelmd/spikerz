@@ -2,60 +2,77 @@
   flex: 1;
   padding: 24px;
   background-color: #fff;
-  
+  height: 100vh;
+  overflow: scroll;
+  width: 420px;
+  scrollbar-width: none;
+  overflow-x: hidden;
+
   @media (min-width: 992px) {
-    flex: 0 0 45%;
-    max-width: 45%;
-    border-right: 1px solid #e0e0e0;
+    // border-right: 1px solid #e0e0e0;
   }
 }
 
 section {
   margin-bottom: 32px;
-  
   h2 {
+    font-weight: 700;
     font-size: 20px;
-    font-weight: 500;
-    color: #4CAF50;
+    line-height: 22px;
+    letter-spacing: 1%;
+    text-transform: capitalize;
+    color: #02983e;
     margin-bottom: 16px;
   }
-  
+
   p {
-    font-size: 14px;
-    color: #616161;
-    line-height: 1.5;
-    margin: 0;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 21px;
+    letter-spacing: 1%;
+    text-transform: capitalize;
+    color: #525D73;
   }
 }
 
 .info-table {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   .info-row {
     display: flex;
     border-bottom: 1px solid #f0f0f0;
     padding: 12px 0;
-    
+
     &:last-child {
       border-bottom: none;
     }
   }
-  
+
   .info-label {
-    flex: 0 0 40%;
-    font-size: 14px;
-    font-weight: 500;
-    color: #424242;
+    display: flex;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 22px;
+    letter-spacing: 1%;
+    text-transform: capitalize;
+    color: #334155;
+    margin-right: 10px;
   }
-  
+
   .info-value {
-    flex: 0 0 60%;
-    font-size: 14px;
-    color: #616161;
     display: flex;
     align-items: center;
-    
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 22px;
+    letter-spacing: 1%;
+    text-transform: capitalize;
+    color: #525d73;
+
     .check-icon {
       font-size: 18px;
-      color: #4CAF50;
+      color: #4caf50;
       margin-right: 8px;
     }
   }
@@ -65,18 +82,18 @@ section {
   .main-content {
     padding: 16px;
   }
-  
+
   .info-table {
     .info-row {
       flex-direction: column;
       padding: 8px 0;
     }
-    
+
     .info-label {
       flex: 0 0 100%;
       margin-bottom: 4px;
     }
-    
+
     .info-value {
       flex: 0 0 100%;
     }
