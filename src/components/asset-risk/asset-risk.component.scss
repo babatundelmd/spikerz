@@ -374,41 +374,48 @@ section {
 
 // Remediation section styles
 .remediation-section {
-  .remediation-groups {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 16px;
+  .remediation-group {
+    display: flex;
+    gap: 1rem;
+    background-color: transparent;
+    padding: 16px;
 
-    .remediation-group {
-      background-color: #fff;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-      padding: 16px;
+    .group-header {
+      display: flex;
+      align-items: center;
 
-      .group-header {
+      .group-icon {
         display: flex;
         align-items: center;
-        margin-bottom: 16px;
+        justify-content: center;
+        margin-right: 12px;
+      }
 
-        .group-icon {
-          width: 32px;
-          height: 32px;
-          border-radius: 6px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          margin-right: 12px;
+      .group-label-danger {
+        font-weight: 700;
+        font-size: 15px;
+        line-height: 38px;
+        letter-spacing: 0px;
+        text-align: center;
+        color: #e5372b;
+      }
 
-          .material-icons {
-            font-size: 18px;
-            color: #fff;
-          }
-        }
+      .group-label-warning {
+        font-weight: 700;
+        font-size: 15px;
+        line-height: 38px;
+        letter-spacing: 0px;
+        text-align: center;
+        color: #ff9500;
+      }
 
-        .group-label {
-          font-size: 16px;
-          font-weight: 500;
-        }
+      .group-label-success {
+        font-weight: 700;
+        font-size: 15px;
+        line-height: 38px;
+        letter-spacing: 0px;
+        text-align: center;
+        color: #02983e;
       }
     }
   }
